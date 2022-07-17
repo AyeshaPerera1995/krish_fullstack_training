@@ -1,0 +1,11 @@
+
+1. Check whether the node is installed or not(node -v)
+2. Go to Angular web site to install Angular CLI
+3. install angular (npm install -g @angular/cli)
+4. Check the angular version. (ng --version OR ng version)
+5. ng new cosmos-ems --prefix em
+7. Run application (ng serve)
+6. Create a pipe(ng g pipe lkrFormatter) for format the currency
+7. Cretae a component inside shared folder (ng g c shared/progress-bar)
+8. Create a guard inside employee folder(ng g g employees/create-employee)
+9. Create a service (ng g s employees/employee)
