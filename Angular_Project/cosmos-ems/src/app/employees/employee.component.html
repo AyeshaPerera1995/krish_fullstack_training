@@ -1,0 +1,53 @@
+<div class="card">
+    <div class="card-header">
+       {{title}}  <br> {{message}}      
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2"> Designation Filter:</div>
+            <div class="col-md-4">
+                <!-- Here we did a property binding using [] and to pass event using () -->
+                <!-- What you type on the text, it will go to the designationFilter in component file  -->
+                <input type="text" [(ngModel)]="designationFilter"/>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-6">
+                <h6>Filterd by : {{designationFilter}}</h6>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table" *ngIf="employees.length">
+                <thead>
+                    <tr>
+                    <th>
+                        <button class="btn btn-primary" (click)="toggleIcon()">{{showIcon?"Hide":"Show"}} Avatar</button>
+                    </th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Designation</th>
+                    <th>Insurance Balance</th>
+                    <th>RBT progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of filteredEmployees">
+                    <td>
+                        <!-- we did here a property binding -->
+                        <img [src]="employee.icon" *ngIf="showIcon" >
+                    </td>
+                    <td>{{employee.firstName}}</td>
+                    <td>{{employee.lastName}}</td>
+                    <td>{{employee.designation}}</td>
+                    <td>{{employee.insuranceBalance | currency:"LKR":"symbol":"3.2-2" | lkrFormatter:"Rs. "}}</td>
+                    <!-- Below here, i am calling progress component, inside employee(child to parent) -->
+                    <td><em-progress-bar [progress]='employee.rbtProgress'
+                        [firstName]='employee.firstName'
+                        (progressClick)='onMessageReceived($event)'
+                        ></em-progress-bar></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
