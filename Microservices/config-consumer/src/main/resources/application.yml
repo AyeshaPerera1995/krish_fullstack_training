@@ -1,0 +1,4 @@
+spring:
+  application:
+    name: membership
+    #you must give the service name....
