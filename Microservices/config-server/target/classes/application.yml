@@ -1,0 +1,17 @@
+server:
+  port: 8191
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+#          uri: https://github.com/AyeshaPerera1995/spring-cloud-config-store
+#          search-paths:
+#            - '*service'
+          uri: https://github.com/AyeshaPerera1995/microservices-course-on-youtube-config-store
+          search-paths:
+            - 'service-config/*service'
+# if you use private repo,
+#          username: root
+#          passphrase: 12345
