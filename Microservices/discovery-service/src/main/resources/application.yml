@@ -1,0 +1,12 @@
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  datacenter: Colombo-SriLanka
+  environment: production
+server:
+  port: 8761 # this is the default port of eureka
+#spring:
+#  main:
+#    allow-bean-definition-overriding: true
+
