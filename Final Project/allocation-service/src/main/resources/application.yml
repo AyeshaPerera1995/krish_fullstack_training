@@ -1,0 +1,27 @@
+server:
+  port: 9191
+spring:
+  main:
+    allow-circular-references: true
+  data:
+    mongodb:
+      uri: mongodb+srv://aypdev:becxa2tCfEr9PAL6@cluster0.kyy6i.mongodb.net/FuelDistributionApp?retryWrites=true&w=majority
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: allocation
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties.spring.json.trusted.packages: 'com.ayesha.spring.fuelapp.api.models'
+    topic:
+      name: topic_order
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#    topic:
+#      name: topic_schedule
+
+
+
