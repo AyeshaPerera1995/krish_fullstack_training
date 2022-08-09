@@ -1,0 +1,81 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  
+    <title>Dashboard</title>
+  </head>
+  
+  <body class="container bg-light">
+    <div class="text-center pt-5">
+      <img src="../assets/images/dash.png" width="300" height="170" />
+      <h2>Schedule Orders</h2>
+      <p>
+        Fuel Distribution App to handle the traffics of distribution....
+      </p>
+    </div><br>
+  
+    <!-- <div class="card"> -->
+      <!-- <div class="card-body"> -->
+        <div hidden={{hidden}} class="alert alert-{{msg_type}} alert-dismissible">
+          <a href="/schedule_orders" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>{{message}} </strong> 
+        </div>     
+
+        <div class="row">   
+ 
+            <table class="table table-bordered table-striped" style="font-size: 14px;">
+                <thead>
+                    <tr style="color: rgb(100, 98, 98);">
+                        <th>Ref ID</th>
+                        <th>Gas Station</th>
+                        <th>Fuel Type</th>
+                        <th>Fuel Capasity</th>
+                        <th>Schedule Date</th>
+                        <th>Order Status</th>
+                        <th>Action</th>
+                    </tr>               
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let schedule_order of schedule_orders">
+                    <tr *ngIf="schedule_order.status!='Order Cancelled' && schedule_order.status!='Order Dispatched'">
+                        <td>{{schedule_order.id}}</td>
+                        <td>{{schedule_order.station_name}}</td>
+                        <td>{{schedule_order.fuel_type}}</td>
+                        <td>{{schedule_order.fuel_capasity}}</td>
+                        <td>{{ schedule_order.scheduled_date | date }} </td>
+                        <td style="font-weight: bold;">{{schedule_order.status}}</td>
+                        <td *ngIf="schedule_order.scheduled_date==null"><input type="date" class="form-control" [(ngModel)]="date" name="date" required />
+                            <button *ngIf="date!=null" class="btn btn-danger" type="submit" (click)="updateOrderDateAndStatus(schedule_order.id)">Save Date</button>
+                        </td>
+                        <td *ngIf="schedule_order.scheduled_date!=null">
+                          <button class="btn btn-sm btn-danger" disabled style="cursor:none;">Date Scheduled</button>
+                      </td>
+                    </tr>
+                   </ng-container> 
+                </tbody>
+    
+            </table>
+
+      </div>
+    <!-- </div> -->
+    <!-- </div> -->
+
+    <footer>
+      <div class="my-4 text-muted text-center">
+        <p>©Fuel Distribution App 2022</p>
+      </div>
+    </footer>
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+  </body>
+
+
