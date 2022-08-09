@@ -1,0 +1,16 @@
+server:
+  port: 9090
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://aypdev:becxa2tCfEr9PAL6@cluster0.kyy6i.mongodb.net/FuelDistributionApp?retryWrites=true&w=majority
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    topic:
+      name: topic_order
+
+
